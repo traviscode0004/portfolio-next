@@ -126,14 +126,11 @@ export default function PortfolioSection() {
 
           {/* Existing Modals */}
       {/* Modal 1 - Optml Infuse */}
-      <Modal
-  open={openModal === 'optml'}
-  onClose={() => setOpenModal(null)}
-  title="Travis Code - Optml Infuse"
->
+      <Modal open={openModal === 'optml'} onClose={() => setOpenModal(null)} title="Travis Code - Optml Infuse">
   <div className="flex flex-col md:flex-row gap-6">
     {/* Image Section */}
-    <div className="md:w-1/2 w-full flex justify-center">
+    <div className="md:w-1/2 w-full flex justify-center relative">
+      <div className="absolute inset-0 bg-gray-700 animate-pulse rounded-lg" id="skeleton-optml"></div>
       <Image
         src="/optml_site.png"
         alt="Patient screen"
@@ -141,6 +138,10 @@ export default function PortfolioSection() {
         width={500}
         height={300}
         priority
+        onLoadingComplete={() => {
+          const skeleton = document.getElementById('skeleton-optml');
+          if (skeleton) skeleton.style.display = 'none';
+        }}
       />
     </div>
 
@@ -170,38 +171,30 @@ export default function PortfolioSection() {
   </div>
 </Modal>
 
-
-
-
-     {/* Modal 2 - RampExplorer */}
-     <Modal
-  open={openModal === 'rampExplorer'}
-  onClose={() => setOpenModal(null)}
-  title="RampExplorer"
->
+<Modal open={openModal === 'rampExplorer'} onClose={() => setOpenModal(null)} title="RampExplorer">
   <div className="flex flex-col md:flex-row gap-6">
-    {/* Image Section with Link */}
-    <div className="md:w-1/2 flex justify-center">
+    {/* Image Section */}
+    <div className="md:w-1/2 w-full flex justify-center relative">
+      <div className="absolute inset-0 bg-gray-700 animate-pulse rounded-lg" id="skeleton-rampExplorer"></div>
       <a href="https://rampexplorer.com" target="_blank" rel="noopener noreferrer">
         <Image
-          src="/ramp_site.png" // Placeholder image from Optml Infuse
+          src="/ramp_site.png"
           alt="RampExplorer.com"
-          className="rounded-lg"
+          className="rounded-lg object-contain"
           width={500}
           height={300}
+          onLoadingComplete={() => {
+            const skeleton = document.getElementById('skeleton-rampExplorer');
+            if (skeleton) skeleton.style.display = 'none';
+          }}
         />
       </a>
     </div>
-    
+
     {/* Text Section */}
-    <div className="md:w-1/2">
+    <div className="md:w-1/2 w-full text-gray-300 text-lg leading-relaxed overflow-y-auto max-h-96">
       <p className="mt-2">
-        <a
-          href="https://rampexplorer.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-teal-400  underline hover:text-reactColor"
-        >
+        <a href="https://rampexplorer.com" target="_blank" rel="noopener noreferrer" className="text-teal-400 underline hover:text-reactColor">
           RampExplorer.com
         </a>{' '}
         enables anglers to share and discover boat ramps and kayak access points. It uses advanced mapping technologies
@@ -219,64 +212,79 @@ export default function PortfolioSection() {
   </div>
 </Modal>
 
-
-{/* Modal 3 - Sniffing Out Stories */}
-<Modal
-  open={openModal === 'sniffingOutStories'}
-  onClose={() => setOpenModal(null)}
-  title="Sniffing Out Stories"
->
+<Modal open={openModal === 'sniffingOutStories'} onClose={() => setOpenModal(null)} title="Sniffing Out Stories">
   <div className="flex flex-col md:flex-row gap-6">
-    <div className="md:w-1/2 flex justify-center">
+    {/* Image Section */}
+    <div className="md:w-1/2 w-full flex justify-center relative">
+      <div className="absolute inset-0 bg-gray-700 animate-pulse rounded-lg" id="skeleton-sniffingOutStories"></div>
       <Image
-        src="/sniffing_site.png" // Replace with an actual pet-related cover image from the public folder
+        src="/sniffing_site.png"
         alt="Sniffing Out Stories Cover"
-        className="rounded-lg"
+        className="rounded-lg object-contain"
         width={500}
         height={300}
+        onLoadingComplete={() => {
+          const skeleton = document.getElementById('skeleton-sniffingOutStories');
+          if (skeleton) skeleton.style.display = 'none';
+        }}
       />
     </div>
-    <div className="md:w-1/2">
-    <p className="mt-2">
-  <strong>Sniffing Out Stories</strong> is a social media platform for pet lovers, where users can share 
-  stories, images, and moments about their pets. The platform integrates AI-powered tools to craft personalized 
-  pet narratives and illustrations, bringing each pet&apos;s unique story to life.
-</p>
+
+    {/* Text Section */}
+    <div className="md:w-1/2 w-full text-gray-300 text-lg leading-relaxed overflow-y-auto max-h-96">
+      <p className="mt-2">
+        <strong>Sniffing Out Stories</strong> is a social media platform for pet lovers, where users can share 
+        stories, images, and moments about their pets. The platform integrates AI-powered tools to craft personalized 
+        pet narratives and illustrations, bringing each pet's unique story to life.
+      </p>
       <p className="mt-2">
         Built with a modern stack, Sniffing Out Stories ensures seamless performance, efficient data storage, 
         and an engaging user experience.
       </p>
       <ul className="list-disc list-inside mt-4">
-      <li>AI-powered storytelling and image generation</li>
+        <li>AI-powered storytelling and image generation</li>
         <li>Next.js with App Router</li>
         <li>React 19 for seamless UI</li>
         <li>PostgreSQL for robust data management</li>
         <li>Tailwind CSS for responsive design</li>
-        <li>AI-powered storytelling and image generation</li>
       </ul>
     </div>
   </div>
 </Modal>
 
-      {/* New Modal - Portfolio Project */}
-      <Modal open={openModal === 'portfolioProject'} onClose={() => setOpenModal(null)} title="TravisCode Portfolio">
-        <div className="flex flex-col md:flex-row gap-6">
-          <div className="md:w-1/2 flex justify-center">
-            <Image src="/portfolio_site.png" alt="TravisCode Portfolio" className="rounded-lg" width={500} height={300} />
-          </div>
-          <div className="md:w-1/2 text-gray-300">
-            <p className="mt-2">
-              Built with modern technologies, this portfolio highlights my technical skills and projects.
-            </p>
-            <ul className="list-disc list-inside mt-4">
-              <li>Next.js 15</li>
-              <li>React 19</li>
-              <li>Tailwind CSS</li>
-              <li>Responsive Design</li>
-            </ul>
-          </div>
-        </div>
-      </Modal>
+<Modal open={openModal === 'portfolioProject'} onClose={() => setOpenModal(null)} title="TravisCode Portfolio">
+  <div className="flex flex-col md:flex-row gap-6">
+    {/* Image Section */}
+    <div className="md:w-1/2 w-full flex justify-center relative">
+      <div className="absolute inset-0 bg-gray-700 animate-pulse rounded-lg" id="skeleton-portfolioProject"></div>
+      <Image
+        src="/portfolio_site.png"
+        alt="TravisCode Portfolio"
+        className="rounded-lg object-contain"
+        width={500}
+        height={300}
+        onLoadingComplete={() => {
+          const skeleton = document.getElementById('skeleton-portfolioProject');
+          if (skeleton) skeleton.style.display = 'none';
+        }}
+      />
+    </div>
+
+    {/* Text Section */}
+    <div className="md:w-1/2 w-full text-gray-300 text-lg leading-relaxed overflow-y-auto max-h-96">
+      <p className="mt-2">
+        Built with modern technologies, this portfolio highlights my technical skills and projects.
+      </p>
+      <ul className="list-disc list-inside mt-4">
+        <li>Next.js 15</li>
+        <li>React 19</li>
+        <li>Tailwind CSS</li>
+        <li>Responsive Design</li>
+      </ul>
+    </div>
+  </div>
+</Modal>
+
     </section>
   );
 }
