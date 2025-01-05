@@ -1,10 +1,9 @@
 'use client';
 
-import Image from 'next/image';
-
 export default function HeroSection() {
   return (
     <section
+      id="top"
       className='
         section1
         relative 
@@ -49,8 +48,8 @@ export default function HeroSection() {
 
         {/* Tagline */}
         <p className='text-sm sm:text-lg italic'>
-          "Whatever your stack, I'll make it work for you—creatively and
-          efficiently!"
+          &quot;Whatever your stack, I&apos;ll make it work for you—creatively and
+          efficiently!&quot;
         </p>
       </div>
     </section>

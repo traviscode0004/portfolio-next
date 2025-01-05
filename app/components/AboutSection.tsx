@@ -33,7 +33,7 @@ export default function AboutSection() {
           {/* Description */}
           <p className="text-gray-700 mb-4 leading-relaxed text-center">
             I specialize in creating scalable, user-centric applications using modern technologies
-            like React, Python, PostgreSQL, and AI APIs. While I’m not a data scientist, I
+            like React, Python, PostgreSQL, and AI APIs. While I&apos;m not a data scientist, I
             seamlessly integrate AI and cloud services to add powerful features like predictive
             insights and automation. Whether building for healthcare, mapping, or creative
             projects, I thrive on turning challenges into innovative solutions.
@@ -45,14 +45,14 @@ export default function AboutSection() {
             onClick={() =>
               window.open('/Travis_Decker_resume.pdf', '_blank', 'noopener,noreferrer')
             }
-            className="bg-reactColor text-white py-2 px-6 rounded-md hover:bg-blue-700 transition-colors mb-4"
+            className="resumeBtn mb-4"
           >
             Resume
           </button>
 
           {/* Tagline */}
           <p className="text-xs text-gray-500 text-center">
-            "Let’s work together to bring your vision to life!"
+            &quot;Let&apos;s work together to bring your vision to life!&quot;
           </p>
         </div>
       </div>

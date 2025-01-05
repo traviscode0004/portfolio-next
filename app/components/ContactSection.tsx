@@ -66,7 +66,7 @@ export default function ContactSection() {
             <div className="flex justify-center space-x-4">
               <button
                 type="submit"
-                className="bg-reactColor text-white py-2 px-6 rounded-md hover:bg-blue-700 transition-colors"
+                className="resumeBtn"
               >
                 Send
               </button>

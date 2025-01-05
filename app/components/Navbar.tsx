@@ -36,7 +36,7 @@ export default function Navbar() {
     >
       <div className="container mx-auto flex items-center justify-between px-4">
         {/* Logo/Brand */}
-        <Link href="/">
+        <Link href="#top">
           <span className="text-white text-xl">
             &lt;/
             <span className="text-reactColor">TravisCode</span>

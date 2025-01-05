@@ -58,10 +58,7 @@ export default function PortfolioSection() {
               RampExplorer.com <span className="portPill ml-2">MVP Complete</span>
             </h4>
             <p className="text-gray-700 my-4">
-              Mapping and AI-Enhanced Insights | In Progress This platform enables anglers to share and discover boat
-              ramps using Google Maps API for mapping and AWS for back-end services. I'm expanding it with AI APIs and
-              Python-based tools to provide water clarity predictions by analyzing satellite imagery via Google Earth
-              Engine.
+            RampExplorer enables anglers to share and discover boat ramps and kayak access points using advanced mapping technologies like the Google Maps API. The platform allows users to create custom entries tailored for both boat and kayak use, providing essential details such as parking availability, launch conditions, accessibility, and nearby amenities. An exciting upcoming feature will integrate Google Earth Engine to provide the latest satellite imagery, enabling anglers and boaters to view up-to-date water color and conditions. This future enhancement will help users make even more informed decisions about their trips, ensuring they have the best experience on the water.
             </p>
             <button
               onClick={() => setOpenModal('rampExplorer')}
@@ -88,7 +85,7 @@ export default function PortfolioSection() {
               SniffingOutStories.com <span className="portPill ml-2">In Progress</span>
             </h4>
             <p className="text-gray-700 my-4">
-              Sniffing Out Stories is a platform combining AI storytelling with social pet sharing. Users can create personalized pet stories and illustrations using AI while connecting with a community of pet lovers. With PostgreSQL on Vercel and Next.js, we're building features like user profiles, pet profiles, and a social feed for sharing stories and photos, all enhanced with modern styling and optimized performance.
+              Sniffing Out Stories is a platform combining AI storytelling with social pet sharing. Users can create personalized pet stories and illustrations using AI while connecting with a community of pet lovers. With PostgreSQL on Vercel and Next.js, we&apos;re building features like user profiles, pet profiles, and a social feed for sharing stories and photos, all enhanced with modern styling and optimized performance.
             </p>
             <button
               onClick={() => setOpenModal('sniffingOutStories')}
@@ -127,7 +124,7 @@ export default function PortfolioSection() {
         </div>
       </div>
 
-      {/* Existing Modals */}
+          {/* Existing Modals */}
       {/* Modal 1 - Optml Infuse */}
       <Modal
   open={openModal === 'optml'}
@@ -177,25 +174,39 @@ export default function PortfolioSection() {
 
 
      {/* Modal 2 - RampExplorer */}
-<Modal
+     <Modal
   open={openModal === 'rampExplorer'}
   onClose={() => setOpenModal(null)}
   title="RampExplorer"
 >
   <div className="flex flex-col md:flex-row gap-6">
+    {/* Image Section with Link */}
     <div className="md:w-1/2 flex justify-center">
-      <Image
-        src="/ramp_site.png" // Placeholder image from Optml Infuse
-        alt="RampExplorer Placeholder"
-        className="rounded-lg"
-        width={500}
-        height={300}
-      />
+      <a href="https://rampexplorer.com" target="_blank" rel="noopener noreferrer">
+        <Image
+          src="/ramp_site.png" // Placeholder image from Optml Infuse
+          alt="RampExplorer.com"
+          className="rounded-lg"
+          width={500}
+          height={300}
+        />
+      </a>
     </div>
+    
+    {/* Text Section */}
     <div className="md:w-1/2">
       <p className="mt-2">
-        RampExplorer enables anglers to share and discover boat ramps while incorporating AI-based water clarity
-        predictions. It uses advanced mapping technologies like the Google Maps API and AI-powered data processing.
+        <a
+          href="https://rampexplorer.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-teal-400  underline hover:text-reactColor"
+        >
+          RampExplorer.com
+        </a>{' '}
+        enables anglers to share and discover boat ramps and kayak access points. It uses advanced mapping technologies
+        like the Google Maps API and will soon incorporate the latest satellite imagery from Google Earth Engine to
+        provide up-to-date water conditions and insights.
       </p>
       <ul className="list-disc list-inside mt-4">
         <li>React.js</li>
@@ -207,6 +218,7 @@ export default function PortfolioSection() {
     </div>
   </div>
 </Modal>
+
 
 {/* Modal 3 - Sniffing Out Stories */}
 <Modal
