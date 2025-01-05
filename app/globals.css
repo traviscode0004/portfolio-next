@@ -1,21 +1,212 @@
+/* 1) Import your desired Google font. */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+
+/* 2) Include Tailwind base, components, utilities. */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* 3) Global fonts & resets. */
+html,
+body {
+  @apply font-montserrat text-base m-0 p-0;
+  color: #fff; /* Default text color. You can override in sections if needed. */
+  background-color: #282c34; /* fallback background if you want. */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* 4) Custom color classes mapped from tailwind.config.js. */
+.reactColor {
+  @apply text-reactColor;
+}
+.qlColor {
+  @apply text-qlColor;
+}
+.dbColor {
+  @apply text-dbColor;
+}
+.jColor {
+  @apply text-jColor;
+}
+.aiColor {
+  @apply text-aiColor;
+}
+
+/* Optional syntax styling from old code. */
+.syntax {
+  @apply text-white;
+}
+
+/* 5) Badge/pill styles for portfolio date range, etc. */
+.portPill {
+  @apply inline-block rounded-full px-2 py-1 text-white bg-qlColor;
+}
+
+/* Example button style used in your old code. */
+.portBtn {
+  @apply bg-jColor text-gray-800 border-white border rounded-lg
+    px-4 py-2 transition-colors duration-300;
+}
+
+.portBtn:hover {
+  @apply bg-transparent text-yellow-400 border-yellow-400;
+}
+
+/* Another example from old “.travisBtn”. */
+.travisBtn {
+  @apply bg-reactColor text-white px-4 py-2 rounded transition-colors duration-300;
+}
+.travisBtn:hover {
+  @apply bg-qlColor;
+}
+
+/* 6) Navbar styling from old “menu” classes. 
+   NOTE: The exact scrolled logic is done via React + Tailwind classes in Navbar.tsx,
+   but here's optional fallback if you want it. */
+.menu {
+  background-color: rgba(12.5, 13.7, 16.5, 0.5);
+  border-bottom: 1px solid #474747;
+  min-height: 75px;
+  transition: background 0.5s, min-height 0.5s ease-in-out;
+}
+.menu--scrolled {
+  background-color: rgba(12.5, 13.7, 16.5, 1);
+  min-height: 50px;
+}
+
+/* 7) Hero section from old “.section1”. 
+   NOTE: we often set backgrounds in a React component with <Image>, 
+   but you can keep or remove these if you want the old fallback CSS. */
+.section1 {
+  background-color: #282c34;
+  background-image: url('/images/hero_background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #ffffff;
+  overflow: hidden;
+  min-height: 450px;
+  max-height: 450px;
+  border-bottom: 1px solid #707070;
+}
+
+/* A helper for hero title alignment */
+.heroTitle {
+  margin-top: 180px; /* tweak as needed */
+  text-align: center;
+}
+
+/* Example old classes to replicate big icons and hover “breathing” effect */
+.reactFont {
+  text-align: center; /* or any styling you had */
+  min-width: 120px;
+  min-height: 120px;
+}
+
+.breath {
+  font-size: 104px;
+  color: #61dafb; /* React logo color */
+  transition: font-size 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+.breath:hover {
+  font-size: 112px;
+}
+
+/* For the second icon */
+.breathQl {
+  font-size: 104px;
+  color: #e00098; /* GraphQL pink */
+  transition: font-size 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+.breathQl:hover {
+  font-size: 112px;
+}
+
+/* For the third icon */
+.breathDb {
+  font-size: 104px;
+  color: #13aa52; /* Node/DB green */
+  transition: font-size 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+.breathDb:hover {
+  font-size: 112px;
+}
+
+
+/* 8) Modal background from old code (if you still use custom modals).
+   If you are using a Tailwind-based <Modal> component, you can omit. */
+.modal-content {
+  background: rgba(12.5, 13.7, 16.5, 0.9);
+  color: rgb(199, 199, 199);
+}
+.modal-size {
+  max-width: 1000px;
+}
+
+/* 9) Additional sections from old code. 
+   Replace row/col references with Tailwind flex/grid if needed. */
+   .section1 {
+    background-color: #282c34;
+    min-height: 450px;
+    max-height: 450px;
+    border-bottom: solid;
+    border-width: 1px;
+    border-color: #707070;
+    color: white;
+    background-image: url("/hero_background.png");
+    background-repeat: no-repeat;
+    text-align: center;
+    background-size: 100%;
+    overflow: hidden;
+  }
+.section2 {
+  @apply bg-white border-b border-gray-400 py-10 w-full;
+  color: #000;
+}
+.section3,
+.section4,
+.section6 {
+  @apply bg-white border-b border-gray-400 py-10 w-full;
+  color: #000;
+}
+.section5 {
+  background: linear-gradient(to bottom right, #61dafb, #282c34);
+  color: #000;
+  @apply text-center py-10;
+}
+/* More layout spacing, etc., as needed. */
+
+/* 10) Example for small “Scroll to top” or form success messages */
+#successMessage {
+  @apply text-green-600 font-semibold;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.animate-scaleIn {
+  animation: scaleIn 0.3s ease-out;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+
+/* 
+   NOTE: All references to .row, .col-md-4, etc. from Bootstrap 
+   are replaced by Tailwind flex/grid classes in your .tsx files.
+   If you see any leftover classes referencing Bootstrap, remove or convert them.
+*/
+
+/* 
+   This file should be enough for you to preserve most old styles 
+   while letting Tailwind handle layout, spacing, etc. 
+*/

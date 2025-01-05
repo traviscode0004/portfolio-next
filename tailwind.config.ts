@@ -1,18 +1,26 @@
-import type { Config } from "tailwindcss";
-
-export default {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    // For the Next 15 App Router:
+    "./app/**/*.{js,ts,jsx,tsx}",
+    // If you ever place components outside 'app':
+    "./components/**/*.{js,ts,jsx,tsx}",
+    // If you still use the /pages directory:
+    "./pages/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        reactColor: "#61dafb",
+        qlColor: "#e00098",
+        dbColor: "#13aa52",
+        jColor: "#EFD81D",
+        aiColor: '#FFA500'
+      },
+      fontFamily: {
+        montserrat: ["Montserrat", "sans-serif"],
       },
     },
   },
   plugins: [],
-} satisfies Config;
+};
