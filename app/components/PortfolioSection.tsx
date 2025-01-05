@@ -237,11 +237,11 @@ export default function PortfolioSection() {
       />
     </div>
     <div className="md:w-1/2">
-      <p className="mt-2">
-        <strong>Sniffing Out Stories</strong> is a social media platform for pet lovers, where users can share 
-        stories, images, and moments about their pets. The platform integrates AI-powered tools to craft personalized 
-        pet narratives and illustrations, bringing each pet's unique story to life.
-      </p>
+    <p className="mt-2">
+  <strong>Sniffing Out Stories</strong> is a social media platform for pet lovers, where users can share 
+  stories, images, and moments about their pets. The platform integrates AI-powered tools to craft personalized 
+  pet narratives and illustrations, bringing each pet&apos;s unique story to life.
+</p>
       <p className="mt-2">
         Built with a modern stack, Sniffing Out Stories ensures seamless performance, efficient data storage, 
         and an engaging user experience.
