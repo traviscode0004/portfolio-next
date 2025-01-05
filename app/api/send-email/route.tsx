@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
 
-export async function POST(req) {
+export async function POST(req: Request) {
   try {
     const { name, email, message } = await req.json();
 
@@ -11,7 +11,7 @@ export async function POST(req) {
       secure: true, // Enable SSL/TLS
       auth: {
         user: process.env.EMAIL_USER, // Your GoDaddy email address
-        pass: process.env.EMAIL_PASS,  //Your GoDaddy email password
+        pass: process.env.EMAIL_PASS, // Your GoDaddy email password
       },
     });
 
@@ -27,8 +27,13 @@ export async function POST(req) {
     await transporter.sendMail(mailOptions);
 
     return new Response(JSON.stringify({ message: 'Email sent successfully' }), { status: 200 });
-  } catch (error) {
-    console.error('Error sending email:', error);
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error('Error sending email:', error.message);
+    } else {
+      console.error('Unknown error occurred while sending email');
+    }
+
     return new Response(JSON.stringify({ error: 'Error sending email' }), { status: 500 });
   }
 }
