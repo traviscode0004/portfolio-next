@@ -4,10 +4,38 @@ import { FormEvent, useState } from 'react';
 
 export default function ContactSection() {
   const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    setSuccessMessage('Thank You!');
+
+    // Grab form values
+    const formData = new FormData(e.target as HTMLFormElement);
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+    const message = formData.get('message') as string;
+
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email, message }),
+      });
+
+      if (response.ok) {
+        setSuccessMessage('Thank you for reaching out! Your message has been sent.');
+        setErrorMessage(''); // Clear error message if any
+        (e.target as HTMLFormElement).reset(); // Clear the form
+      } else {
+        setSuccessMessage('');
+        setErrorMessage('Oops! Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      setSuccessMessage('');
+      setErrorMessage('There was an error sending your message. Please try again later.');
+    }
   }
 
   return (
@@ -28,6 +56,7 @@ export default function ContactSection() {
               <input
                 type="text"
                 id="name"
+                name="name"
                 className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-reactColor"
                 placeholder="Your name"
                 required
@@ -42,6 +71,7 @@ export default function ContactSection() {
               <input
                 type="email"
                 id="email"
+                name="email"
                 className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-reactColor"
                 placeholder="you@example.com"
                 required
@@ -55,8 +85,9 @@ export default function ContactSection() {
               </label>
               <textarea
                 id="message"
+                name="message" // Add this line
                 rows={4}
-                className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-reactColor"
+                className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-reactColor text-gray-800 placeholder-gray-500"
                 placeholder="Your message here..."
                 required
               />
@@ -83,6 +114,13 @@ export default function ContactSection() {
           {successMessage && (
             <div className="mt-6 text-center text-green-600 font-semibold">
               {successMessage}
+            </div>
+          )}
+
+          {/* Error Message */}
+          {errorMessage && (
+            <div className="mt-6 text-center text-red-600 font-semibold">
+              {errorMessage}
             </div>
           )}
         </div>

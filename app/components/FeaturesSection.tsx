@@ -10,21 +10,21 @@ export default function FeaturesSection() {
           <Card
             iconClass="fab fa-react breath"
             title="Full-Stack Web Development"
-            description="I specialize in creating high-performance, user-friendly applications using React.js, Next.js, and AWS. My expertise includes leveraging GraphQL to streamline data queries and optimize API interactions, ensuring seamless communication between front-end and back-end systems. By using modern frameworks like TypeScript and Tailwind CSS, I deliver responsive and visually appealing designs."
+            description="Building robust, scalable web applications with a focus on React.js, GraphQL, and AWS. Experienced in developing responsive and user-centric interfaces that drive engagement, with optimized API integrations for seamless data flow."
           />
 
           {/* ======== Cloud Solutions & Automation ======== */}
           <Card
             iconClass="fas fa-bolt breathQl"
             title="Cloud Solutions & Automation"
-            description="With expertise in AWS services like Amplify, AppSync, Lambda, and DynamoDB, I build scalable cloud solutions tailored to your business. By integrating AI APIs, I enhance applications with advanced features like satellite imagery analysis, predictive insights, and automation. My work includes creating efficient Twilio-based reminder systems and interactive mapping tools that simplify complex workflows."
+            description="Leveraging AWS (AppSync, Lambda, Amplify) and Twilio to create automated, cloud-based solutions. Notably developed a Twilio reminder system for a major medical provider, enhancing communication and operational efficiency."
           />
 
           {/* ======== Data-Driven Applications ======== */}
           <Card
             iconClass="fas fa-database breathDb"
             title="Data-Driven Applications"
-            description="I thrive on creating applications where data powers the user experience. Whether it’s real-time integrations via GraphQL and Node.js, type-safe code with TypeScript, or AWS AppSync with DynamoDB for a fully managed backend, I focus on building solutions that run smoothly and efficiently. I also integrate third-party APIs like Google Maps to add interactive features that enhance the overall experience."
+            description="Specializing in data integration using GraphQL and Node.js to power dynamic applications. Proven success in projects requiring real-time data handling, such as integrating mapping APIs for real-time tracking in web applications."
           />
         </div>
       </div>

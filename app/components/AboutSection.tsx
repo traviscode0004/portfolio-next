@@ -26,17 +26,13 @@ export default function AboutSection() {
           <h4 className="text-2xl font-semibold text-black mb-4">
             Travis Decker{' '}
             <span className="bg-dbColor text-white py-1 px-3 rounded-full whitespace-nowrap text-sm sm:text-base">
-              Ready to Work!
+            Avaliable Now*
             </span>
           </h4>
 
           {/* Description */}
           <p className="text-gray-700 mb-4 leading-relaxed text-center">
-            I specialize in creating scalable, user-centric applications using modern technologies
-            like React, Python, PostgreSQL, and AI APIs. While I&apos;m not a data scientist, I
-            seamlessly integrate AI and cloud services to add powerful features like predictive
-            insights and automation. Whether building for healthcare, mapping, or creative
-            projects, I thrive on turning challenges into innovative solutions.
+          Looking to elevate your next project? With expertise in React.js, GraphQL, and AWS, I can build dynamic, scalable applications tailored to your needs. Whether you’re after a custom WordPress solution, a cloud-integrated application, or an MVP to showcase to stakeholders, I’m ready to bring your vision to life. Let’s connect and make it happen!
           </p>
 
           {/* Resume Button */}
@@ -52,7 +48,7 @@ export default function AboutSection() {
 
           {/* Tagline */}
           <p className="text-xs text-gray-500 text-center">
-            &quot;Let&apos;s work together to bring your vision to life!&quot;
+            &quot;*For web development work. Sorry Ladies I am taken.&quot;
           </p>
         </div>
       </div>

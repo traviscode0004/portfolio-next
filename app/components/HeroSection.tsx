@@ -40,9 +40,9 @@ export default function HeroSection() {
           I specialize in building dynamic, scalable web applications with{' '}
           <span className='reactColor'>React</span>,{' '}
           <span className='jColor'>Next.js</span>, and{' '}
-          <span className='dbColor'>AWS</span>. Leveraging modern tools like{' '}
-          <span className='qlColor'>Python</span> and{' '}
-          <span className='aiColor'>AI APIs</span>, I create innovative
+          <span className='dbColor'>AWS</span>. Leveraging tools like{' '}
+          <span className='qlColor'>Python</span> with{' '}
+          <span className='aiColor'>GraphQL or SQL</span>, I create innovative
           solutions that deliver actionable insights and improved workflows.
         </h6>
 
