@@ -1,39 +1,36 @@
-import nodemailer from 'nodemailer';
+import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
+
+const sesClient = new SESClient({ region: 'us-east-1' }); // Replace with your SES region
 
 export async function POST(req: Request) {
   try {
     const { name, email, message } = await req.json();
 
-    // Configure the transporter with GoDaddy's recommended SMTP settings
-    const transporter = nodemailer.createTransport({
-      host: 'traviscode.com', // Outgoing SMTP server
-      port: 465, // Use port 465 for SSL
-      secure: true, // Enable SSL/TLS
-      auth: {
-        user: process.env.EMAIL_USER, // Your GoDaddy email address
-        pass: process.env.EMAIL_PASS, // Your GoDaddy email password
+    // Construct the email parameters
+    const params = {
+      Source: 'travis@traviscode.com', // Verified sender address
+      Destination: {
+        ToAddresses: ['travis@traviscode.com'], // Recipient address
       },
-    });
-
-    // Email options
-    const mailOptions = {
-      from: process.env.EMAIL_USER, // Sender's email address
-      to: 'travis@traviscode.com', // Recipient's email address
-      subject: `New Contact Form Submission from ${name}`,
-      text: `You have a new message from ${name} (${email}):\n\n${message}`,
+      Message: {
+        Subject: {
+          Data: `New Contact Form Submission from ${name}`,
+        },
+        Body: {
+          Text: {
+            Data: `You have a new message from ${name} (${email}):\n\n${message}`,
+          },
+        },
+      },
     };
 
-    // Send the email
-    await transporter.sendMail(mailOptions);
+    // Send the email using SES
+    const command = new SendEmailCommand(params);
+    await sesClient.send(command);
 
     return new Response(JSON.stringify({ message: 'Email sent successfully' }), { status: 200 });
-  } catch (error: unknown) {
-    if (error instanceof Error) {
-      console.error('Error sending email:', error.message);
-    } else {
-      console.error('Unknown error occurred while sending email');
-    }
-
+  } catch (error) {
+    console.error('Error sending email:', error);
     return new Response(JSON.stringify({ error: 'Error sending email' }), { status: 500 });
   }
 }
