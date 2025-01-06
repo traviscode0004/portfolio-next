@@ -1,32 +1,42 @@
-import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
+import AWS from 'aws-sdk';
 
-const sesClient = new SESClient({ region: 'us-east-1' }); // Replace with your SES region
+interface EmailRequestBody {
+  name: string;
+  email: string;
+  message: string;
+}
 
-export async function POST(req: Request) {
+export async function POST(req: Request): Promise<Response> {
   try {
-    const { name, email, message } = await req.json();
+    const { name, email, message }: EmailRequestBody = await req.json();
 
-    // Construct the email parameters
-    const params = {
-      Source: 'travis@traviscode.com', // Verified sender address
+    // Configure AWS SDK
+    AWS.config.update({
+      region: process.env.AWS_REGION,
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    });
+
+    // Create SES service object
+    const ses: AWS.SES = new AWS.SES();
+
+    // Email options
+    const params: AWS.SES.SendEmailRequest = {
       Destination: {
-        ToAddresses: ['travis@traviscode.com'], // Recipient address
+        ToAddresses: ['travis@traviscode.com'], // Replace with your recipient
       },
       Message: {
-        Subject: {
-          Data: `New Contact Form Submission from ${name}`,
-        },
         Body: {
-          Text: {
-            Data: `You have a new message from ${name} (${email}):\n\n${message}`,
-          },
+          Text: { Data: `You have a new message from ${name} (${email}):\n\n${message}` },
         },
+        Subject: { Data: `New Contact Form Submission from ${name}` },
       },
+      Source: 'travis@traviscode.com', // Must be a verified email address
     };
 
-    // Send the email using SES
-    const command = new SendEmailCommand(params);
-    await sesClient.send(command);
+    // Send the email
+    const result: AWS.SES.SendEmailResponse = await ses.sendEmail(params).promise();
+    console.log('Email sent:', result);
 
     return new Response(JSON.stringify({ message: 'Email sent successfully' }), { status: 200 });
   } catch (error) {
