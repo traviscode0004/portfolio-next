@@ -27,9 +27,13 @@ export async function POST(req: Request) {
     await transporter.sendMail(mailOptions);
 
     return new Response(JSON.stringify({ message: 'Email sent successfully' }), { status: 200 });
-  } catch {
-    // Simplified error handling
-    console.error('Error sending email');
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error('Error sending email:', error.message);
+    } else {
+      console.error('Unknown error occurred while sending email');
+    }
+
     return new Response(JSON.stringify({ error: 'Error sending email' }), { status: 500 });
   }
 }

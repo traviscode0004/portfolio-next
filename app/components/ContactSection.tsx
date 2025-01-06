@@ -33,6 +33,7 @@ export default function ContactSection() {
         setErrorMessage('Oops! Something went wrong. Please try again.');
       }
     } catch (error) {
+      console.log("🚀 ~ handleSubmit ~ error:", error)
       setSuccessMessage('');
       setErrorMessage('There was an error sending your message. Please try again later.');
     }
