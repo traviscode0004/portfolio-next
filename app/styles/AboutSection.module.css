@@ -1,0 +1,59 @@
+/* AboutSection.module.css */
+
+/* Image slides in from the left */
+.fadeInLeft {
+  opacity: 0;
+  transform: translateX(-50px);
+  /* The transition or initial states can be kept short 
+       because the actual movement is done in the keyframes. */
+}
+
+.fadeInLeft[data-scroll='in'] {
+  animation: slideInLeft 0.8s forwards ease-out;
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(10px);
+  }
+  80% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Card slides in from the right */
+.fadeInRight {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.fadeInRight[data-scroll='in'] {
+  animation: slideInRight 0.8s forwards ease-out;
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(-10px);
+  }
+  80% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

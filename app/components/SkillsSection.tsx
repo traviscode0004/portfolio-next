@@ -1,5 +1,9 @@
 'use client';
 
+import { useEffect } from 'react';
+import { setupScrollAnimations } from '../utils/scrollAnimations';
+import styles from '../styles/SkillsSection.module.css';
+
 export default function SkillsSection() {
   const skills = [
     { name: 'React.js', color: 'reactColor' },
@@ -20,17 +24,33 @@ export default function SkillsSection() {
     { name: 'Kendo React', color: 'reactColor' },
   ];
 
+  useEffect(() => {
+    setupScrollAnimations(); // Initialize scroll animations on mount
+  }, []);
+
   return (
-    <section id="skills" className="py-10 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+    <section
+      id="skills"
+      className="py-10 bg-gradient-to-br from-gray-900 to-gray-800 text-white"
+    >
       <div className="container mx-auto px-4">
-        <h3 className="text-3xl font-bold text-center mb-8">Skills</h3>
+        <h3
+          className={`text-3xl font-bold text-center mb-8 ${styles.fadeUp}`}
+          data-scroll="out"
+        >
+          Skills
+        </h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
           {skills.map((skill, index) => (
             <div
               key={index}
-              className="bg-white shadow-lg rounded-lg p-4 flex items-center justify-center text-black text-lg font-semibold hover:shadow-2xl hover:scale-105 transition-transform duration-300"
+              className={`${styles.skillCard}`} // New skill card class for style & animation
+              data-scroll="out"
+              style={{ transitionDelay: `${index * 0.1}s` }} // stagger effect
             >
-              <span className={`${skill.color}`}>{skill.name}</span>
+              <span className={`${skill.color} ${styles.skillName}`}>
+                {skill.name}
+              </span>
             </div>
           ))}
         </div>

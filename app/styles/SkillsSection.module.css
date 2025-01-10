@@ -1,0 +1,89 @@
+/* SkillsSection.module.css */
+
+/* 
+  --- 1. Keep or adapt your existing .fadeUp code ---
+  We'll assume you already have fadeUp defined as:
+*/
+.fadeUp[data-scroll='out'] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.fadeUp[data-scroll='in'] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 
+    --- 2. Skill Card Animations ---
+    We'll create a "pop" style animation that 
+    scales the card and rotates it slightly for a dynamic feel. 
+  */
+.skillCard {
+  /* Initial state when data-scroll="out" */
+  opacity: 0;
+  transform: scale(0.7) rotate(-5deg);
+  transition: transform 0.7s ease-out, opacity 0.7s ease-out;
+  /* A subtle gradient or professional background */
+  background: linear-gradient(to bottom right, #ffffff, #f8f8f8);
+  border-radius: 0.5rem; /* or 8px */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  text-align: center;
+  color: #000; /* default text color inside card */
+  cursor: default; /* or pointer if you want a hover effect */
+}
+
+/* On hover, if you want a bit more lift */
+.skillCard:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px) scale(0.72) rotate(-3deg);
+  /* Adjust as desired */
+}
+
+/*
+    Once data-scroll switches to 'in', let's animate 
+    to a normal scale with a quick pop or bounce. 
+  */
+.skillCard[data-scroll='in'] {
+  animation: popIn 0.7s forwards ease-out;
+}
+
+/* 
+    The "popIn" keyframes 
+    - starts small and slightly rotated, 
+    - overshoot with a scale > 1 for a "bounce," 
+    - settle at scale(1) and rotate(0).
+  */
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.7) rotate(-5deg);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.1) rotate(2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* 
+    --- 3. Skill Name ---
+    We can further style the text inside the card 
+    to look more professional. 
+  */
+.skillName {
+  font-size: 1rem; /* or 16px */
+  font-weight: 600; /* slightly bold */
+  text-transform: none; /* or uppercase if you prefer */
+  /* The color is determined by your existing color classes 
+       (e.g., .reactColor, .jColor, .dbColor, etc.). */
+}
+
+.skillCard.reactColor {
+  border-top: 3px solid #61dafb;
+}

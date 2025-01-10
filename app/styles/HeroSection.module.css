@@ -1,0 +1,70 @@
+/* HeroSection.module.css */
+
+/* 1. (Optional) A container-level animation. 
+   You can omit or adjust this if you don't need container movement. */
+.heroSection {
+  /* Example: a slight scale down and fade in of the entire hero container. */
+  animation: heroContainerEntrance 1s ease-out forwards;
+  opacity: 0; /* initial state */
+  transform: scale(0.95);
+}
+
+@keyframes heroContainerEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 2. Staggered text lines: 
+   We'll target direct child elements (h1, h3, h6, p, etc.) inside .heroTextCenter. 
+   Each one gets the same keyframe but different delays via nth-child selectors. */
+
+.heroTextCenter > * {
+  opacity: 0;
+  transform: translateY(30px);
+  /* We won't define the final state here since the keyframe will handle it. */
+  animation-fill-mode: forwards; /* retain end state */
+}
+
+/* Headline (first child) */
+.heroTextCenter > *:nth-child(1) {
+  animation: heroTextReveal 0.7s 0.2s ease-out forwards;
+}
+
+/* Roles (second child) */
+.heroTextCenter > *:nth-child(2) {
+  animation: heroTextReveal 0.7s 0.4s ease-out forwards;
+}
+
+/* Description (third child) */
+.heroTextCenter > *:nth-child(3) {
+  animation: heroTextReveal 0.7s 0.6s ease-out forwards;
+}
+
+/* Tagline (fourth child) */
+.heroTextCenter > *:nth-child(4) {
+  animation: heroTextReveal 0.7s 0.8s ease-out forwards;
+}
+
+/* You can add more nth-child rules if you add more lines in the hero. */
+
+/* Keyframes for the text reveal: slides up and fades in. */
+@keyframes heroTextReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-5px); /* slight overshoot for a subtle bounce */
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,53 @@
+/* ContactSection.module.css */
+
+/* 1. Fade Down Heading */
+.fadeDown {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fadeDown[data-scroll='in'] {
+  animation: fadeDownAnim 0.8s forwards ease-out;
+}
+
+@keyframes fadeDownAnim {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(5px); /* slight overshoot */
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* 2. Fade Up Card */
+.fadeUp {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+.fadeUp[data-scroll='in'] {
+  animation: fadeUpAnim 1.2s forwards ease-out;
+}
+
+@keyframes fadeUpAnim {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-5px); /* slight overshoot */
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
