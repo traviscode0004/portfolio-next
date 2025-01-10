@@ -1,78 +1,113 @@
+/* Container adjustments */
 .container {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .cardGrid {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    position: relative; /* To align the cards */
-  }
-  
-  .card {
+  position: relative;
+  /* overflow: hidden;  <-- Removed to prevent clipping */
+}
+
+/* Let Tailwind handle the grid layout */
+.cardGrid {
+  position: relative; /* Keep if you need relative positioning */
+  /* Remove gap: 2rem; because Tailwind already provides spacing */
+}
+
+/* Card Fade-in & Scale */
+.card {
+  opacity: 0;
+  transform: scale(0.8); /* Default initial state */
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+/* Trigger animations when .animateCards is added to the section */
+.animateCards .card:nth-child(1) {
+  animation: slideInFromLeft 1.5s ease-out forwards;
+}
+
+.animateCards .card:nth-child(2) {
+  animation: bounceCenter 1.5s ease-out forwards;
+}
+
+.animateCards .card:nth-child(3) {
+  animation: slideInFromRight 1.5s ease-out forwards;
+}
+
+/* Keyframes for desktop animations */
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%) scale(1);
     opacity: 0;
-    transform: scale(0.8);
-    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
   }
-  
-  .animateCards .card:nth-child(1) {
-    animation: slideInFromLeft 1.5s ease-out forwards;
+  80% {
+    transform: translateX(-1rem) scale(1.05);
+    opacity: 1;
   }
-  
-  .animateCards .card:nth-child(2) {
-    animation: bounceCenter 1.5s ease-out forwards;
+  100% {
+    transform: translateX(0) scale(1);
+    opacity: 1;
   }
-  
-  .animateCards .card:nth-child(3) {
-    animation: slideInFromRight 1.5s ease-out forwards;
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%) scale(1);
+    opacity: 0;
   }
-  
-  @keyframes slideInFromLeft {
-    0% {
-      transform: translateX(-100%) scale(1);
-      opacity: 0;
-    }
-    80% {
-      transform: translateX(-1rem) scale(1.05);
-      opacity: 1;
-    }
-    100% {
-      transform: translateX(0) scale(1);
-      opacity: 1;
-    }
+  80% {
+    transform: translateX(1rem) scale(1.05);
+    opacity: 1;
   }
-  
-  @keyframes slideInFromRight {
-    0% {
-      transform: translateX(100%) scale(1);
-      opacity: 0;
-    }
-    80% {
-      transform: translateX(1rem) scale(1.05);
-      opacity: 1;
-    }
-    100% {
-      transform: translateX(0) scale(1);
-      opacity: 1;
-    }
+  100% {
+    transform: translateX(0) scale(1);
+    opacity: 1;
   }
-  
-  @keyframes bounceCenter {
-    0% {
-      transform: translateY(100%) scale(0.8);
-      opacity: 0;
-    }
-    50% {
-      transform: translateY(0) scale(1.2);
-      opacity: 1;
-    }
-    70% {
-      transform: scale(0.9);
-    }
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
+}
+
+@keyframes bounceCenter {
+  0% {
+    transform: translateY(100%) scale(0.8);
+    opacity: 0;
   }
-  
+  50% {
+    transform: translateY(0) scale(1.2);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  /* Disable animations on mobile for better performance */
+  .card {
+    opacity: 1;
+    transform: none; /* Reset scale and transform */
+    transition: none; /* Disable transition on mobile */
+  }
+
+  .animateCards .card {
+    animation: none; /* Remove animations for mobile */
+  }
+
+  /* For better spacing, let Tailwind handle stacking */
+  .cardGrid {
+    flex-wrap: wrap; /* Ensure cards stack properly on mobile */
+    display: flex; /* Use flex for wrapping */
+  }
+}
+
+/* Handle reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .animateCards .card {
+    animation: none;
+  }
+}

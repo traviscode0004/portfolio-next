@@ -1,9 +1,6 @@
-/* PortfolioSection.module.css */
-
 /* Container Styles */
 .container {
   position: relative;
-  overflow: hidden;
 }
 
 /* Card Grid Styles */
@@ -12,12 +9,20 @@
   justify-content: center;
   gap: 2rem;
   position: relative; /* To align the cards */
+  flex-wrap: wrap; /* Ensure cards wrap properly on small screens */
 }
 
 /* Card Styles */
 .card {
   /* Ensure no conflicting styles here */
-  /* Removed opacity and transform to prevent hiding */
+  opacity: 0; /* Default for animations */
+  transform: scale(0.8); /* Initial state for animations */
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.card[data-scroll="in"] {
+  opacity: 1;
+  transform: scale(1); /* Animation target state */
 }
 
 /* Existing Keyframes */
@@ -76,7 +81,7 @@
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-.fadeUp[data-scroll='in'] {
+.fadeUp[data-scroll="in"] {
   animation: fadeUpBounce 0.8s forwards;
 }
 
@@ -105,7 +110,7 @@
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-.fadeUpLeft[data-scroll='in'] {
+.fadeUpLeft[data-scroll="in"] {
   animation: slideInLeftBounce 0.8s forwards;
 }
 
@@ -134,7 +139,7 @@
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-.fadeUpRight[data-scroll='in'] {
+.fadeUpRight[data-scroll="in"] {
   animation: slideInRightBounce 0.8s forwards;
 }
 
@@ -153,5 +158,41 @@
   100% {
     transform: translateX(0);
     opacity: 1;
+  }
+}
+
+/* Mobile Adjustments (Simplified Animations) */
+@media (max-width: 768px) {
+  /* Disable complex animations for cards */
+  .card {
+    opacity: 1;
+    transform: none;
+    transition: none; /* No transition or animation on mobile */
+  }
+
+  /* Simplify or disable text/image animations */
+  .fadeUp,
+  .fadeUpLeft,
+  .fadeUpRight {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
+/* Handle reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .fadeUp,
+  .fadeUpLeft,
+  .fadeUpRight {
+    opacity: 1;
+    transform: none;
+    animation: none;
   }
 }

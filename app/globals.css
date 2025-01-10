@@ -81,20 +81,7 @@ body {
   min-height: 50px;
 }
 
-/* 7) Hero section from old “.section1”. 
-   NOTE: we often set backgrounds in a React component with <Image>, 
-   but you can keep or remove these if you want the old fallback CSS. */
-.section1 {
-  background-color: #282c34;
-  background-image: url('/images/hero_background.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  color: #ffffff;
-  overflow: hidden;
-  min-height: 450px;
-  max-height: 450px;
-  border-bottom: 1px solid #707070;
-}
+
 
 /* A helper for hero title alignment */
 .heroTitle {
@@ -155,15 +142,12 @@ body {
     background-color: #282c34;
     min-height: 450px;
     max-height: 450px;
-    border-bottom: solid;
-    border-width: 1px;
-    border-color: #707070;
     color: white;
     background-image: url("/hero_background.png");
     background-repeat: no-repeat;
     text-align: center;
     background-size: 100%;
-    overflow: hidden;
+  
   }
 .section2 {
   @apply bg-white border-b border-gray-400 py-10 w-full;

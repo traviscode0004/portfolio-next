@@ -1,61 +1,44 @@
-/* SkillsSection.module.css */
-
-/* 
-  --- 1. Keep or adapt your existing .fadeUp code ---
-  We'll assume you already have fadeUp defined as:
-*/
-.fadeUp[data-scroll='out'] {
+/* --- 1. Fade Up Animation for Section Titles --- */
+.fadeUp[data-scroll="out"] {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.7s ease-out, transform 0.7s ease-out;
 }
 
-.fadeUp[data-scroll='in'] {
+.fadeUp[data-scroll="in"] {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* 
-    --- 2. Skill Card Animations ---
-    We'll create a "pop" style animation that 
-    scales the card and rotates it slightly for a dynamic feel. 
-  */
+/* --- 2. Skill Card Animations --- */
 .skillCard {
   /* Initial state when data-scroll="out" */
   opacity: 0;
   transform: scale(0.7) rotate(-5deg);
   transition: transform 0.7s ease-out, opacity 0.7s ease-out;
-  /* A subtle gradient or professional background */
+
+  /* Professional card styles */
   background: linear-gradient(to bottom right, #ffffff, #f8f8f8);
-  border-radius: 0.5rem; /* or 8px */
+  border-radius: 0.5rem; /* Smooth corners */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
   text-align: center;
-  color: #000; /* default text color inside card */
-  cursor: default; /* or pointer if you want a hover effect */
+  color: #000; /* Default text color inside card */
+  cursor: default;
 }
 
-/* On hover, if you want a bit more lift */
+/* Hover Effect for Desktop */
 .skillCard:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   transform: translateY(-2px) scale(0.72) rotate(-3deg);
-  /* Adjust as desired */
 }
 
-/*
-    Once data-scroll switches to 'in', let's animate 
-    to a normal scale with a quick pop or bounce. 
-  */
-.skillCard[data-scroll='in'] {
+/* Trigger "pop" animation when data-scroll switches to 'in' */
+.skillCard[data-scroll="in"] {
   animation: popIn 0.7s forwards ease-out;
 }
 
-/* 
-    The "popIn" keyframes 
-    - starts small and slightly rotated, 
-    - overshoot with a scale > 1 for a "bounce," 
-    - settle at scale(1) and rotate(0).
-  */
+/* Pop-in Keyframes */
 @keyframes popIn {
   0% {
     opacity: 0;
@@ -71,19 +54,49 @@
   }
 }
 
-/* 
-    --- 3. Skill Name ---
-    We can further style the text inside the card 
-    to look more professional. 
-  */
+/* --- 3. Skill Name Styling --- */
 .skillName {
-  font-size: 1rem; /* or 16px */
-  font-weight: 600; /* slightly bold */
-  text-transform: none; /* or uppercase if you prefer */
-  /* The color is determined by your existing color classes 
-       (e.g., .reactColor, .jColor, .dbColor, etc.). */
+  font-size: 1rem; /* 16px */
+  font-weight: 600;
+  text-transform: none; /* Optional: use uppercase if preferred */
 }
 
+/* Color accents based on skill type */
 .skillCard.reactColor {
-  border-top: 3px solid #61dafb;
+  border-top: 3px solid #61dafb; /* React blue */
+}
+.skillCard.jColor {
+  border-top: 3px solid #f7df1e; /* JavaScript yellow */
+}
+.skillCard.dbColor {
+  border-top: 3px solid #13aa52; /* Database green */
+}
+.skillCard.qlColor {
+  border-top: 3px solid #e10098; /* GraphQL pink */
+}
+
+/* --- 4. Mobile Adjustments --- */
+@media (max-width: 768px) {
+  /* Simplify card appearance for mobile */
+  .skillCard {
+    opacity: 1;
+    transform: none; /* Reset to default position */
+    animation: none; /* Disable animations */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+
+  /* Simplify hover effect for smaller screens */
+  .skillCard:hover {
+    transform: none;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* --- 5. Accessibility (Reduced Motion) --- */
+@media (prefers-reduced-motion: reduce) {
+  .skillCard {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
 }

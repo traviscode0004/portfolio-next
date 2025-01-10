@@ -1,14 +1,12 @@
-/* AboutSection.module.css */
+/* Desktop Animations */
 
 /* Image slides in from the left */
 .fadeInLeft {
   opacity: 0;
   transform: translateX(-50px);
-  /* The transition or initial states can be kept short 
-       because the actual movement is done in the keyframes. */
 }
 
-.fadeInLeft[data-scroll='in'] {
+.fadeInLeft[data-scroll="in"] {
   animation: slideInLeft 0.8s forwards ease-out;
 }
 
@@ -36,7 +34,7 @@
   transform: translateX(50px);
 }
 
-.fadeInRight[data-scroll='in'] {
+.fadeInRight[data-scroll="in"] {
   animation: slideInRight 0.8s forwards ease-out;
 }
 
@@ -55,5 +53,26 @@
   100% {
     transform: translateX(0);
     opacity: 1;
+  }
+}
+
+/* Mobile Adjustments (Simplified or Disabled Animations) */
+@media (max-width: 768px) {
+  /* Disable image animation for better performance */
+  .fadeInLeft,
+  .fadeInRight {
+    opacity: 1;
+    transform: none; /* Reset to normal position */
+    animation: none; /* Disable animations */
+  }
+}
+
+/* Accessibility Support */
+@media (prefers-reduced-motion: reduce) {
+  .fadeInLeft,
+  .fadeInRight {
+    opacity: 1;
+    transform: none;
+    animation: none;
   }
 }

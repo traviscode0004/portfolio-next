@@ -1,4 +1,4 @@
-/* ContactSection.module.css */
+/* Desktop Animations */
 
 /* 1. Fade Down Heading */
 .fadeDown {
@@ -7,7 +7,7 @@
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.fadeDown[data-scroll='in'] {
+.fadeDown[data-scroll="in"] {
   animation: fadeDownAnim 0.8s forwards ease-out;
 }
 
@@ -33,7 +33,7 @@
   transition: opacity 1.2s ease-out, transform 1.2s ease-out;
 }
 
-.fadeUp[data-scroll='in'] {
+.fadeUp[data-scroll="in"] {
   animation: fadeUpAnim 1.2s forwards ease-out;
 }
 
@@ -49,5 +49,28 @@
   100% {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  /* Disable animations for headings and cards */
+  .fadeDown,
+  .fadeUp {
+    opacity: 1; /* Ensure visibility */
+    transform: none; /* Reset positioning */
+    animation: none; /* Disable animations */
+    transition: none; /* Remove transition for mobile */
+  }
+}
+
+/* Accessibility Support */
+@media (prefers-reduced-motion: reduce) {
+  .fadeDown,
+  .fadeUp {
+    opacity: 1;
+    transform: none; /* Reset positioning */
+    animation: none; /* Disable animations */
+    transition: none; /* Remove transition for reduced motion users */
   }
 }

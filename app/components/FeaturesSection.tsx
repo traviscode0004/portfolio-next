@@ -21,6 +21,7 @@ export default function FeaturesSection() {
       className={`py-16 bg-gradient-to-b from-gray-50 to-white ${styles.container}`}
     >
       <div className="max-w-7xl mx-auto px-4">
+        {/* Tailwind grid layout */}
         <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 ${styles.cardGrid}`}>
           <Card
             iconClass="fab fa-react breath"
@@ -51,7 +52,10 @@ interface CardProps {
 
 function Card({ iconClass, title, description }: CardProps) {
   return (
-    <div className={`bg-white shadow-lg rounded-lg p-6 text-center flex flex-col justify-between h-full ${styles.card}`}>
+    <div className={`
+      bg-white shadow-lg rounded-lg p-6 text-center flex flex-col justify-between h-full 
+      ${styles.card}
+    `}>
       <div className="reactFont">
         <i className={`${iconClass} text-6xl`} aria-hidden="true"></i>
       </div>
