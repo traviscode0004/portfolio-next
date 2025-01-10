@@ -1,20 +1,21 @@
 'use client';
 
 import { FormEvent, useEffect, useState } from 'react';
-import styles from '../styles/ContactSection.module.css'; // Import your new module
+import styles from '../styles/ContactSection.module.css';
 import { setupScrollAnimations } from '../utils/scrollAnimations';
 
 export default function ContactSection() {
-
-  useEffect(() => {
-      setupScrollAnimations(); // Initialize the scroll animations on component mount
-    }, []);
-
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [loading, setLoading] = useState(false); // Loading state for spinner
+
+  useEffect(() => {
+    setupScrollAnimations(); // Initialize the scroll animations on component mount
+  }, []);
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
+    setLoading(true); // Start spinner
 
     // Grab form values
     const formData = new FormData(e.target as HTMLFormElement);
@@ -43,11 +44,13 @@ export default function ContactSection() {
       console.log("🚀 ~ handleSubmit ~ error:", error);
       setSuccessMessage('');
       setErrorMessage('There was an error sending your message. Please try again later.');
+    } finally {
+      setLoading(false); // Stop spinner
     }
   }
 
   return (
-    <section id="contact" className="py-16 /* bg-gradient-to-b from-gray-100 to-white */">
+    <section id="contact" className="py-16 bg-gradient-to-b from-gray-50 to-white">
       <div className="container mx-auto px-4">
         <h5
           className={`
@@ -59,7 +62,6 @@ export default function ContactSection() {
           Drop me a line <i className="fas fa-fish"></i>
         </h5>
 
-        {/* Card Wrapper */}
         <div
           className={`
             bg-white shadow-lg rounded-lg p-8 max-w-3xl mx-auto 
@@ -69,7 +71,6 @@ export default function ContactSection() {
           data-scroll="out"
         >
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Name Field */}
             <div>
               <label htmlFor="name" className="block font-semibold text-gray-700">
                 Name
@@ -84,7 +85,6 @@ export default function ContactSection() {
               />
             </div>
 
-            {/* Email Field */}
             <div>
               <label htmlFor="email" className="block font-semibold text-gray-700">
                 Email
@@ -99,7 +99,6 @@ export default function ContactSection() {
               />
             </div>
 
-            {/* Message Field */}
             <div>
               <label htmlFor="message" className="block font-semibold text-gray-700">
                 Message
@@ -114,10 +113,20 @@ export default function ContactSection() {
               />
             </div>
 
-            {/* Buttons */}
             <div className="flex justify-center space-x-4">
-              <button type="submit" className="resumeBtn">
-                Send
+              <button
+                type="submit"
+                className="resumeBtn flex items-center justify-center space-x-2"
+                disabled={loading} // Disable button while loading
+              >
+                {loading ? (
+                  <div
+                    className="loader border-t-transparent border-white border-4 w-5 h-5 rounded-full animate-spin"
+                    aria-label="Loading"
+                  ></div>
+                ) : (
+                  'Send'
+                )}
               </button>
               <button
                 type="reset"
@@ -128,14 +137,12 @@ export default function ContactSection() {
             </div>
           </form>
 
-          {/* Success Message */}
           {successMessage && (
             <div className="mt-6 text-center text-green-600 font-semibold">
               {successMessage}
             </div>
           )}
 
-          {/* Error Message */}
           {errorMessage && (
             <div className="mt-6 text-center text-red-600 font-semibold">
               {errorMessage}
