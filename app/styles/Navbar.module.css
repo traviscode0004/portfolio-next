@@ -1,18 +1,16 @@
-/* Navbar.module.css */
-
-/* Initially hidden/translated upward */
+/* Navbar Initial Load Animation */
 .navBarLoad {
   opacity: 0;
   transform: translateY(-50px);
   transition: transform 0.5s, opacity 0.5s;
 }
 
-/* When active, run the keyframe animation */
+/* Active state after loaded */
 .navBarLoad.active {
   animation: dropDown 0.8s ease-out forwards;
 }
 
-/* Slide down + fade in animation */
+/* Keyframe for dropdown animation */
 @keyframes dropDown {
   0% {
     opacity: 0;
@@ -25,4 +23,49 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Full-Screen Mobile Menu */
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* Fullscreen height */
+  background-color: rgba(12.5, 13.7, 16.5, 1);
+  transform: translateX(100%); /* Start off-screen to the right */
+  transition: transform 0.3s ease-in-out;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* When menu is open */
+.menuOpen {
+  transform: translateX(0); /* Slide into view */
+}
+
+/* When menu is closed */
+.menuClosed {
+  transform: translateX(100%); /* Slide out of view */
+}
+
+/* Close Button */
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 51; /* Ensure it's above the menu content */
+  transition: color 0.2s ease-in-out;
+}
+
+.closeButton:hover {
+  color: rgba(255, 255, 255, 0.7); /* Slightly dim on hover */
 }

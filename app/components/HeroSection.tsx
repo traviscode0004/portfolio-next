@@ -15,7 +15,6 @@ export default function HeroSection() {
         justify-center 
         w-full 
         text-white 
-        overflow-hidden
         min-h-[450px]
         max-h-[450px]
         pt-16

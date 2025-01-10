@@ -1,13 +1,11 @@
 /* Container adjustments */
 .container {
   position: relative;
-  /* overflow: hidden;  <-- Removed to prevent clipping */
 }
 
 /* Let Tailwind handle the grid layout */
 .cardGrid {
-  position: relative; /* Keep if you need relative positioning */
-  /* Remove gap: 2rem; because Tailwind already provides spacing */
+  position: relative;
 }
 
 /* Card Fade-in & Scale */
@@ -81,7 +79,6 @@
 
 /* Mobile Adjustments */
 @media (max-width: 768px) {
-  /* Disable animations on mobile for better performance */
   .card {
     opacity: 1;
     transform: none; /* Reset scale and transform */
@@ -92,9 +89,9 @@
     animation: none; /* Remove animations for mobile */
   }
 
-  /* For better spacing, let Tailwind handle stacking */
+  /* For better spacing, ensure cards stack properly */
   .cardGrid {
-    flex-wrap: wrap; /* Ensure cards stack properly on mobile */
+    flex-wrap: wrap; /* Ensure cards stack properly */
     display: flex; /* Use flex for wrapping */
   }
 }

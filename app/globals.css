@@ -9,9 +9,10 @@
 /* 3) Global fonts & resets. */
 html,
 body {
-  @apply font-montserrat text-base m-0 p-0;
+  @apply font-montserrat text-base m-0 p-0 overflow-x-hidden;
   color: #fff; /* Default text color. You can override in sections if needed. */
-  background-color: #282c34; /* fallback background if you want. */
+  background: linear-gradient(to bottom, #282c34, #00fffb);
+
 }
 
 /* 4) Custom color classes mapped from tailwind.config.js. */
@@ -70,7 +71,7 @@ body {
 /* 6) Navbar styling from old “menu” classes. 
    NOTE: The exact scrolled logic is done via React + Tailwind classes in Navbar.tsx,
    but here's optional fallback if you want it. */
-.menu {
+/* .menu {
   background-color: rgba(12.5, 13.7, 16.5, 0.5);
   border-bottom: 1px solid #474747;
   min-height: 75px;
@@ -80,7 +81,7 @@ body {
   background-color: rgba(12.5, 13.7, 16.5, 1);
   min-height: 50px;
 }
-
+ */
 
 
 /* A helper for hero title alignment */
@@ -139,7 +140,6 @@ body {
 /* 9) Additional sections from old code. 
    Replace row/col references with Tailwind flex/grid if needed. */
    .section1 {
-    background-color: #282c34;
     min-height: 450px;
     max-height: 450px;
     color: white;

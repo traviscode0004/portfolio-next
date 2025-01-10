@@ -10,15 +10,16 @@ import Footer from './components/Footer'
 import SkillsSection from './components/SkillsSection'
 
 export default function HomePage() {
+  
   return (
     <>
       <Navbar />
       <HeroSection />
-      <FeaturesSection />
-      <PortfolioSection />
+       <FeaturesSection />
+     <PortfolioSection />
       <SkillsSection />
       <AboutSection />
-      <ContactSection />
+      <ContactSection /> 
       <Footer />
     </>
   )

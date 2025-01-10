@@ -104,42 +104,6 @@ export default function PortfolioSection() {
           </div>
         </div>
 
-        {/* Card 3 - Sniffing Out Stories */}
-        <div
-          className={`bg-white shadow-lg rounded-lg p-6 mb-10 flex flex-col md:flex-row items-center hover:shadow-xl transition-shadow duration-300`}
-        >
-          <div
-            className={`${styles.fadeUpLeft} md:w-1/2 flex justify-center`}
-            data-scroll="out"
-          >
-            <Image
-              src="/sniffing_pc.png"
-              alt="Sniffing Out Stories Placeholder"
-              className="rounded-lg"
-              width={500}
-              height={300}
-            />
-          </div>
-          <div
-            className={`${styles.fadeUpRight} md:w-1/2 text-center md:text-left mt-6 md:mt-0`}
-            data-scroll="out"
-          >
-            <h4 className="text-reactColor text-2xl font-semibold">
-              SniffingOutStories.com <span className="portPill ml-2">In Progress</span>
-            </h4>
-            <p className="text-gray-700 my-4">
-              Sniffing Out Stories is a platform combining AI storytelling with social pet sharing. Users can create
-              personalized pet stories and illustrations using AI while connecting with a community of pet lovers.
-            </p>
-            <button
-              onClick={() => setOpenModal('sniffingOutStories')}
-              className="portBtn py-2 px-4"
-            >
-              Preview
-            </button>
-          </div>
-        </div>
-
         {/* Card 4 - Portfolio Project */}
         <div
           className={`bg-white shadow-lg rounded-lg p-6 mb-10 flex flex-col md:flex-row items-center hover:shadow-xl transition-shadow duration-300`}
@@ -175,6 +139,44 @@ export default function PortfolioSection() {
             </button>
           </div>
         </div>
+        {/* Card 4 - Sniffing Out Stories */}
+        <div
+          className={`bg-white shadow-lg rounded-lg p-6 mb-10 flex flex-col md:flex-row items-center hover:shadow-xl transition-shadow duration-300`}
+        >
+          <div
+            className={`${styles.fadeUpLeft} md:w-1/2 flex justify-center`}
+            data-scroll="out"
+          >
+            <Image
+              src="/sniffing_pc.png"
+              alt="Sniffing Out Stories Placeholder"
+              className="rounded-lg"
+              width={500}
+              height={300}
+            />
+          </div>
+          <div
+            className={`${styles.fadeUpRight} md:w-1/2 text-center md:text-left mt-6 md:mt-0`}
+            data-scroll="out"
+          >
+            <h4 className="text-reactColor text-2xl font-semibold">
+              SniffingOutStories.com <span className="portPill ml-2">In Progress</span>
+            </h4>
+            <p className="text-gray-700 my-4">
+              Sniffing Out Stories is a platform combining AI storytelling with social pet sharing. Users can create
+              personalized pet stories and illustrations using AI while connecting with a community of pet lovers.
+            </p>
+            <button
+              onClick={() => setOpenModal('sniffingOutStories')}
+              className="portBtn py-2 px-4"
+            >
+              Preview
+            </button>
+          </div>
+        </div>
+
+        
+        
       </div>
 
            {/* Existing Modals */}
